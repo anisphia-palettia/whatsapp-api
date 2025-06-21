@@ -10,6 +10,8 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@hono/zod-validator": "^0.7.0",
+    "axios": "^1.10.0",
     "got": "^14.4.7",
     "hono": "^4.8.0",
     "winston": "^3.17.0",
