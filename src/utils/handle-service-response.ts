@@ -9,6 +9,7 @@ export async function handleServiceResponse<T>(
     fallbackStatus: ContentfulStatusCode = 500
 ) {
     if (!response.success) {
+
         return sendError(c, {
             message: response.error.message,
             detail: response.error.details,
@@ -16,7 +17,6 @@ export async function handleServiceResponse<T>(
             status: response.statusCode ?? fallbackStatus,
         });
     }
-
     return sendSuccess(c, {
         message: response.message,
         status: response.statusCode ?? 200,

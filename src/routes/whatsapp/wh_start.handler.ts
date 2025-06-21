@@ -2,6 +2,7 @@ import {LocalHono} from "@/types/LocalHono.ts";
 import {withSessionId} from "@/middleware/with-session-id.ts";
 import WhatsappService from "@/services/whatsapp-service.ts";
 import {sendSuccess} from "@/utils/response.ts";
+import {handleServiceResponse} from "@/utils/handle-service-response.ts";
 
 const wh_startHandler = new LocalHono()
 
@@ -10,10 +11,7 @@ wh_startHandler.post("",
     async (c) => {
         const sessionId = c.get("sessionId")
         const response = await WhatsappService(sessionId).start()
-        return sendSuccess(c, {
-            status: 201,
-            message: response.message,
-        })
+        return handleServiceResponse(c, response)
     }
 )
 
